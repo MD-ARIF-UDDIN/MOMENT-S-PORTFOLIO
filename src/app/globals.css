@@ -87,3 +87,55 @@ input, select, textarea {
 .group:hover .img-zoom {
   transform: scale(1.03);
 }
+
+/* Luxury Brand Typography */
+.font-brand {
+  font-family: var(--font-brand), "Cormorant Garamond", Georgia, serif;
+}
+
+/* Elegant Text Shimmer Animation */
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: textShimmer 5s ease-in-out infinite;
+}
+
+/* Hero Slider Animations */
+@keyframes heroProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-hero-progress {
+  animation: heroProgress 6s linear forwards;
+}
+
+@keyframes heroFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: heroFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

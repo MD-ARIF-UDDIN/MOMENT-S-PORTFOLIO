@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Sparkles, MessageCircle, ArrowRight, Check } from "lucide-react";
+import { MessageCircle, ArrowRight, Check } from "lucide-react";
 import { TEAM_MEMBERS, TeamMember, COMPANY_INFO } from "@/data/photographyData";
 
 interface TeamSectionProps {
@@ -22,7 +22,8 @@ export default function TeamSection({ onSelectTeamMember }: TeamSectionProps) {
   };
 
   return (
-    <section id="team" className="py-20 sm:py-28 bg-[#fcfbf9] border-b border-[#eceae3]" aria-label="Our Creative Team">
+    <section id="team" className="py-20 sm:py-28 bg-[#fcfbf9] border-b border-[#eceae3] scroll-mt-20 relative" aria-label="About & Creative Team">
+      <div id="about" className="absolute -top-20 left-0 w-full h-1 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -60,7 +61,7 @@ export default function TeamSection({ onSelectTeamMember }: TeamSectionProps) {
 
               {/* Founder Badges */}
               <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider text-[#181816] font-semibold flex items-center gap-1.5 shadow-md">
-                <Sparkles className="w-3.5 h-3.5 text-[#1877F2]" />
+                <span className="w-2 h-2 rounded-full bg-[#1877F2] animate-pulse" />
                 <span>Founder &amp; CEO</span>
               </div>
 
@@ -162,86 +163,78 @@ export default function TeamSection({ onSelectTeamMember }: TeamSectionProps) {
         {/* ========================================================
             CREATIVE SPECIALISTS & PRODUCTION TEAM
             ======================================================== */}
-        <div>
-          <div className="flex items-end justify-between mb-8 pb-3 border-b border-[#eceae3]">
-            <div>
-              <span className="text-[10px] uppercase tracking-[0.24em] text-[#807d74] font-mono block">
-                Production Artists
+        {specialists.length > 0 ? (
+          <div>
+            <div className="flex items-end justify-between mb-8 pb-3 border-b border-[#eceae3]">
+              <div>
+                <span className="text-[10px] uppercase tracking-[0.24em] text-[#807d74] font-mono block">
+                  Cinematography &amp; Photography Team
+                </span>
+                <h3 className="font-serif-display text-2xl text-[#181816] font-normal">
+                  Production Artists
+                </h3>
+              </div>
+              <span className="text-xs text-[#807d74] font-mono">
+                Moment&apos;s Creative Crew
               </span>
-              <h3 className="font-serif-display text-2xl text-[#181816] font-normal">
-                Creative Specialists
-              </h3>
             </div>
-            <span className="text-xs text-[#807d74] font-mono">
-              Lead Cinematographers &amp; Colorists
-            </span>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8">
-            {specialists.map((member) => (
-              <div
-                key={member.id}
-                className="group bg-white rounded-2xl overflow-hidden border border-[#eceae3] hover:border-[#181816] shadow-xs hover:shadow-lg transition-all duration-500 flex flex-col justify-between"
-              >
-                <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {specialists.map((member) => (
+                <div
+                  key={member.id}
+                  className="group bg-white rounded-2xl overflow-hidden border border-[#eceae3] hover:border-[#181816] shadow-xs hover:shadow-lg transition-all duration-500 flex flex-col"
+                >
                   {/* Member Portrait */}
                   <div className="relative aspect-[3/4] w-full bg-[#eceae3] overflow-hidden">
                     <Image
                       src={member.image}
-                      alt={member.name}
+                      alt={`${member.name} — ${member.role}`}
                       fill
-                      className="object-cover object-top img-zoom"
+                      className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-
-                    {/* Experience Badge */}
-                    <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-mono text-white">
-                      {member.experience}
-                    </div>
-
-                    {/* Over-image name and role */}
-                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-300 block font-mono mb-1">
-                        {member.role}
-                      </span>
-                      <h4 className="font-serif-display text-2xl font-normal leading-tight">
-                        {member.name}
-                      </h4>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
-                  {/* Member Details */}
-                  <div className="p-6 space-y-4">
-                    <div className="space-y-1">
-                      <span className="text-[10px] uppercase tracking-[0.16em] text-[#807d74] font-mono block">
-                        Discipline Focus
-                      </span>
-                      <p className="text-xs font-medium text-[#181816]">
-                        {member.specialty}
-                      </p>
-                    </div>
-
-                    <p className="text-xs text-[#57554f] leading-relaxed font-light">
-                      {member.bio}
+                  {/* Name and Designation Only */}
+                  <div className="p-5 sm:p-6 text-center bg-white">
+                    <h4 className="font-serif-display text-xl sm:text-2xl font-normal text-[#181816] tracking-tight">
+                      {member.name}
+                    </h4>
+                    <p className="text-xs uppercase tracking-[0.2em] text-[#807d74] font-mono mt-1.5 font-medium">
+                      {member.role}
                     </p>
                   </div>
                 </div>
-
-                {/* Action Button */}
-                <div className="px-6 pb-6 pt-1">
-                  <button
-                    onClick={() => handleInquireWithMember(member)}
-                    className="w-full py-2.5 px-4 rounded-full bg-[#f6f5f0] hover:bg-[#181816] hover:text-white text-[#181816] text-xs font-medium uppercase tracking-[0.12em] transition-colors flex items-center justify-center gap-1.5"
-                  >
-                    <span>Request for Shoot</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          /* Clean CTA panel when no additional specialists are listed */
+          <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[#eceae3] text-center space-y-5">
+            <div className="space-y-2">
+              <span className="text-[11px] uppercase tracking-[0.24em] text-[#807d74] font-mono block">
+                Our Production Collective
+              </span>
+              <h3 className="font-serif-display text-2xl sm:text-3xl text-[#181816] font-normal">
+                A Dedicated Team Behind Every Frame
+              </h3>
+              <p className="text-sm text-[#57554f] max-w-lg mx-auto leading-relaxed font-light">
+                Every wedding and event is covered by a handpicked team of cinematographers, editors, and lighting specialists led by Al Shahriar Babu. Each member is personally trained for consistent excellence in every project.
+              </p>
+            </div>
+            <a
+              href={`https://wa.me/8801643666825?text=${encodeURIComponent("Hello Moment's Photography, I would like to know more about your team and book a consultation with Al Shahriar Babu.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold uppercase tracking-wider shadow-md transition-all hover:scale-105"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>Talk to Our Team via WhatsApp</span>
+            </a>
+          </div>
+        )}
 
       </div>
     </section>

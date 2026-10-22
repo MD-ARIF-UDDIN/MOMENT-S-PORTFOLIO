@@ -12,8 +12,8 @@ export default function SplitFeature({ onSelectCategory }: SplitFeatureProps) {
     if (onSelectCategory) {
       onSelectCategory(category);
     } else {
-      const worksEl = document.getElementById("works");
-      if (worksEl) worksEl.scrollIntoView({ behavior: "smooth" });
+      const el = document.getElementById("photography") || document.getElementById("albums");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     }
   };
 

@@ -163,12 +163,33 @@ export default function ServiceDetailModal({
 
           <button
             onClick={() => {
+              // Build WhatsApp message with service detail info
+              const featureList = service.features.map(f => `  • ${f}`).join('\n');
+              const waText =
+`*SERVICE INQUIRY — MOMENT'S PHOTOGRAPHY*
+
+I am interested in booking the following service:
+
+*Service:* ${service.title}
+*Duration:* ${service.duration}
+*Starting Price:* ${service.startingPrice}
+
+*Key Features:*
+${featureList}
+
+Please provide more information and available dates.`;
+              window.open(
+                `https://wa.me/8801643666825?text=${encodeURIComponent(waText)}`,
+                "_blank",
+                "noopener,noreferrer"
+              );
               onBookService(service.title);
               onClose();
             }}
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#181816] hover:bg-black text-white text-xs font-medium uppercase tracking-[0.14em] transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold uppercase tracking-[0.14em] transition-colors shadow-sm"
           >
-            <span>Commission Shoot</span>
+            <MessageCircle className="w-3.5 h-3.5" />
+            <span>Inquire via WhatsApp</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

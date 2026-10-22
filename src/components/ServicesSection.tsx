@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { Check, ArrowRight, CheckCircle2 } from "lucide-react";
 import {
   WEDDING_PACKAGES,
   HOLUD_PACKAGES,
@@ -106,7 +106,7 @@ export default function ServicesSection({ onSelectPackage }: ServicesProps) {
                 {/* Most Popular Ribbon */}
                 {isPopular && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-zinc-950 text-white text-xs font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
                     <span>Most Popular</span>
                   </div>
                 )}
@@ -151,14 +151,39 @@ export default function ServicesSection({ onSelectPackage }: ServicesProps) {
 
                 {/* Select Package CTA Button */}
                 <button
-                  onClick={() => onSelectPackage(`${pkg.category} - ${pkg.title} (${pkg.price})`)}
+                  onClick={() => {
+                    // Build fully detailed WhatsApp booking message for this package
+                    const deliverableList = pkg.deliverables.map(d => `  • ${d}`).join('\n');
+                    const waText =
+`*PACKAGE BOOKING INQUIRY — MOMENT'S PHOTOGRAPHY*
+
+I would like to book the following package:
+
+*Package:* ${pkg.title}
+*Category:* ${pkg.category}
+*Price:* ${pkg.price} / event
+*Coverage:* ${pkg.coverage}
+*Delivery:* ${pkg.turnaround}
+
+*Included Deliverables:*
+${deliverableList}
+
+Please confirm availability and next steps.`;
+                    window.open(
+                      `https://wa.me/8801643666825?text=${encodeURIComponent(waText)}`,
+                      "_blank",
+                      "noopener,noreferrer"
+                    );
+                    // Also scroll to booking form for additional detail entry
+                    onSelectPackage(`${pkg.category} — ${pkg.title} (${pkg.price})`);
+                  }}
                   className={`w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
                     isPopular
                       ? "bg-zinc-950 hover:bg-black text-white shadow-md hover:scale-[1.01]"
                       : "bg-zinc-100 hover:bg-zinc-950 hover:text-white text-zinc-900 border border-zinc-200"
                   }`}
                 >
-                  <span>Book {pkg.title}</span>
+                  <span>Book {pkg.title} via WhatsApp</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

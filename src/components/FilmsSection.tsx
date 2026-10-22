@@ -288,11 +288,30 @@ export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
                 <button
                   onClick={() => {
                     const title = selectedFilm.title;
+                    const waText =
+`*CINEMATIC FILM INQUIRY — MOMENT'S PHOTOGRAPHY*
+
+I watched your film on Facebook and would like to commission a similar cinematic work:
+
+*Film Reference:* ${title}
+*Style / Client:* ${selectedFilm.coupleOrClient}
+*Type:* ${selectedFilm.duration}
+*Location:* ${selectedFilm.location}
+
+Please share available dates, rates, and your cinematic wedding/event packages.`;
+                    window.open(
+                      `https://wa.me/8801643666825?text=${encodeURIComponent(waText)}`,
+                      "_blank",
+                      "noopener,noreferrer"
+                    );
                     setSelectedFilm(null);
                     onInquireFilm(title);
                   }}
-                  className="px-5 py-2.5 bg-white text-black hover:bg-zinc-200 rounded-full font-medium text-xs uppercase tracking-[0.12em] transition-colors"
+                  className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-semibold text-xs uppercase tracking-[0.12em] transition-colors inline-flex items-center gap-1.5"
                 >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.031 2C6.495 2 2 6.486 2 12.012c0 1.954.561 3.86 1.626 5.502L2 22l4.636-1.583A10.02 10.02 0 0 0 12.031 22C17.568 22 22 17.514 22 12.012 22 6.486 17.568 2 12.031 2Zm5.792 14.288c-.244.686-1.222 1.294-1.874 1.344-.614.047-1.408.067-4.148-1.066-3.298-1.365-5.385-4.717-5.55-4.935-.165-.218-1.332-1.77-1.332-3.376 0-1.606.84-2.395 1.139-2.72.298-.326.653-.408.871-.408.217 0 .435.002.624.011.202.01.472-.077.738.563.272.653.926 2.261 1.008 2.428.082.167.136.363.027.581-.109.218-.163.354-.326.545-.163.19-.344.426-.492.572-.163.164-.333.342-.143.669.19.327.848 1.398 1.817 2.261 1.246 1.11 2.296 1.455 2.623 1.618.327.163.517.136.708-.082.19-.218.816-.953 1.034-1.28.217-.326.435-.272.734-.163.299.109 1.897.896 2.223 1.06.326.163.544.245.626.381.082.136.082.789-.163 1.475Z"/>
+                  </svg>
                   Commission Cinema
                 </button>
               </div>

@@ -16,21 +16,21 @@ export default function Footer() {
           {/* Brand Info with Inverted Black Logo */}
           <div className="sm:col-span-2 lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative h-11 w-9 shrink-0">
+              <div className="relative h-12 w-10 shrink-0">
                 <Image
                   src="/logo.png"
                   alt="Moment's Logo"
                   fill
-                  className="object-contain invert"
+                  className="object-contain"
                   sizes="44px"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif-display text-2xl tracking-normal font-normal text-[#181816] leading-none">
+                <span className="font-brand text-3xl tracking-tight font-semibold text-[#181816] leading-none">
                   Moment&apos;s
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.28em] text-[#807d74] mt-1 font-mono">
-                  Photography Studio
+                  Photography &amp; Cinematography
                 </span>
               </div>
             </div>
@@ -42,13 +42,12 @@ export default function Footer() {
           {/* Column 1: Links */}
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-[11px] uppercase tracking-[0.2em] font-medium text-[#181816] font-mono">
-              Portfolio
+              Photography
             </h4>
             <ul className="space-y-2">
-              <li><a href="#works" className="hover:text-[#181816] transition-colors">Portfolio</a></li>
-              <li><a href="#our-services" className="hover:text-[#181816] transition-colors">Our Services</a></li>
-              <li><a href="#albums" className="hover:text-[#181816] transition-colors">Client Albums</a></li>
+              <li><a href="#photography" className="hover:text-[#181816] transition-colors">Client Albums</a></li>
               <li><a href="#films" className="hover:text-[#181816] transition-colors">Cinematic Films</a></li>
+              <li><a href="#our-services" className="hover:text-[#181816] transition-colors">Our Services</a></li>
               <li><a href="#services" className="hover:text-[#181816] transition-colors">Collections</a></li>
             </ul>
           </div>
@@ -59,11 +58,10 @@ export default function Footer() {
               Studio
             </h4>
             <ul className="space-y-2">
-              <li><a href="#about" className="hover:text-[#181816] transition-colors">Philosophy</a></li>
-              <li><a href="#team" className="hover:text-[#181816] transition-colors">Our Team</a></li>
+              <li><a href="#team" className="hover:text-[#181816] transition-colors">Founder &amp; CEO</a></li>
+              <li><a href="#team" className="hover:text-[#181816] transition-colors">Creative Team</a></li>
               <li><a href="#services" className="hover:text-[#181816] transition-colors">Pricing Guide</a></li>
-              <li><a href="#faq" className="hover:text-[#181816] transition-colors">FAQ</a></li>
-              <li><a href="#booking" className="hover:text-[#181816] transition-colors">Commission</a></li>
+              <li><a href="#booking" className="hover:text-[#181816] transition-colors">Book Shoot</a></li>
             </ul>
           </div>
 
