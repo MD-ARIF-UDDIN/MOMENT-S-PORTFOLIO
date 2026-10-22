@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
-import { COMPANY_INFO } from "@/data/photographyData";
 
 const HERO_SLIDES = [
   {
@@ -283,19 +282,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Studio Numbers Grid */}
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-6 border-t border-zinc-200">
-          {COMPANY_INFO.stats.map((stat, idx) => (
-            <div key={idx} className="space-y-1">
-              <span className="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-950 block">
-                {stat.value}
-              </span>
-              <span className="text-xs uppercase tracking-wider text-zinc-500 font-semibold block">
-                {stat.label}
-              </span>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Play, X, Film, Clock, MapPin } from "lucide-react";
 import { FILMS_DATA, FilmWork, COMPANY_INFO } from "@/data/photographyData";
@@ -33,6 +33,22 @@ function getVideoEmbedUrl(url: string): { type: "facebook" | "youtube" | "html5"
 
 export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
   const [selectedFilm, setSelectedFilm] = useState<FilmWork | null>(null);
+
+  useEffect(() => {
+    if (!selectedFilm) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedFilm(null);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedFilm]);
 
   return (
     <section id="films" className="py-20 sm:py-28 bg-[#f8fafc] border-b border-zinc-200">
@@ -90,7 +106,7 @@ export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
                 </div>
 
                 {/* Film Details */}
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-1.5 text-[11px] text-[#807d74] mb-2 font-mono">
                     <MapPin className="w-3 h-3 text-[#807d74]" />
                     <span>{film.location}</span>
@@ -109,7 +125,7 @@ export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
               </div>
 
               {/* Action Bar */}
-              <div className="px-6 pb-6 pt-3 flex items-center justify-between border-t border-zinc-100">
+              <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-3 flex flex-wrap items-center justify-between gap-2.5 border-t border-zinc-100">
                 <a
                   href={film.videoUrl}
                   target="_blank"
@@ -134,7 +150,7 @@ export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
         </div>
 
         {/* Facebook Films Showcase Banner */}
-        <div className="mt-12 sm:mt-16 p-6 sm:p-8 rounded-2xl bg-white border border-zinc-200 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="mt-12 sm:mt-16 p-5 sm:p-8 rounded-2xl bg-white border border-zinc-200 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-6">
           <div className="space-y-1.5">
             <span className="text-[11px] uppercase tracking-[0.22em] text-zinc-500 font-semibold block font-mono">
               Live Feed &amp; Highlights
@@ -151,7 +167,7 @@ export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
             href={COMPANY_INFO.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#1877F2] hover:bg-[#166fe5] text-white text-xs uppercase tracking-[0.14em] font-semibold transition-all shadow-sm hover:shadow shrink-0"
+            className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#1877F2] hover:bg-[#166fe5] text-white text-xs uppercase tracking-[0.14em] font-semibold transition-all shadow-sm hover:shadow shrink-0 w-full sm:w-auto"
           >
             <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -166,20 +182,20 @@ export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-3 sm:p-6 overflow-y-auto"
         >
           <div className="absolute inset-0" onClick={() => setSelectedFilm(null)} />
 
-          <div className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl z-10 border border-zinc-800">
+          <div className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl z-10 border border-zinc-800 flex flex-col max-h-[92dvh] my-auto">
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-6 py-4 bg-zinc-950/90 border-b border-zinc-800 text-white">
-              <div>
-                <h4 className="font-serif-display text-xl font-normal">{selectedFilm.title}</h4>
-                <p className="text-xs text-zinc-400 font-mono mt-0.5">{selectedFilm.location} · {selectedFilm.coupleOrClient}</p>
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-zinc-950/95 border-b border-zinc-800 text-white shrink-0">
+              <div className="min-w-0 pr-2">
+                <h4 className="font-serif-display text-base sm:text-xl font-normal truncate">{selectedFilm.title}</h4>
+                <p className="text-[11px] sm:text-xs text-zinc-400 font-mono mt-0.5 truncate">{selectedFilm.location} · {selectedFilm.coupleOrClient}</p>
               </div>
               <button
                 onClick={() => setSelectedFilm(null)}
-                className="p-2 rounded-full hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors"
+                className="p-2 rounded-full hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors shrink-0"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
@@ -187,24 +203,24 @@ export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
             </div>
 
             {/* Video Player (Supports Facebook Cinema Showcase, YouTube, and Direct Video) */}
-            <div className="relative aspect-video w-full bg-black flex items-center justify-center overflow-hidden">
+            <div className="relative w-full bg-black flex items-center justify-center overflow-hidden shrink-0">
               {(() => {
                 const isFacebook = selectedFilm.videoUrl.includes("facebook.com") || selectedFilm.videoUrl.includes("fb.watch");
                 if (isFacebook) {
                   return (
-                    <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                    <div className="relative w-full min-h-[300px] sm:min-h-0 sm:aspect-video flex items-center justify-center overflow-hidden">
                       {/* Atmospheric Blurred Background */}
                       <Image
                         src={selectedFilm.thumbnail}
                         alt={selectedFilm.title}
                         fill
-                        sizes="100vw"
-                        className="object-cover scale-110 filter blur-md opacity-45"
+                        sizes="(max-width: 768px) 100vw, 896px"
+                        className="object-cover scale-110 filter blur-md opacity-40"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40" />
 
                       {/* Foreground Cinema Card */}
-                      <div className="relative z-10 text-center p-6 sm:p-10 max-w-lg space-y-5">
+                      <div className="relative z-10 text-center px-4 py-6 sm:p-8 md:p-10 max-w-lg space-y-3 sm:space-y-4">
                         <a
                           href={selectedFilm.videoUrl}
                           target="_blank"
@@ -212,29 +228,29 @@ export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
                           className="relative inline-block group"
                           aria-label={`Play ${selectedFilm.title} on Facebook`}
                         >
-                          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#1877F2] text-white flex items-center justify-center mx-auto shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[#166fe5]">
-                            <Play className="w-9 h-9 sm:w-10 sm:h-10 fill-current ml-1" />
+                          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#1877F2] text-white flex items-center justify-center mx-auto shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[#166fe5]">
+                            <Play className="w-7 h-7 sm:w-9 sm:h-9 fill-current ml-0.5 sm:ml-1" />
                           </div>
                         </a>
 
-                        <div className="space-y-1.5 text-white">
-                          <span className="text-[11px] uppercase tracking-[0.24em] text-[#70a9ff] font-semibold font-mono block">
+                        <div className="space-y-1 text-white">
+                          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.24em] text-[#70a9ff] font-semibold font-mono block">
                             Stream via Official Facebook Page
                           </span>
-                          <h4 className="font-serif-display text-2xl sm:text-3xl font-bold leading-tight">
+                          <h4 className="font-serif-display text-lg sm:text-2xl font-bold leading-tight px-1">
                             {selectedFilm.title}
                           </h4>
-                          <p className="text-xs sm:text-sm text-zinc-300 max-w-md mx-auto">
-                            Plays in 4K with full original music &amp; audio directly on Facebook.
+                          <p className="text-xs sm:text-sm text-zinc-300 max-w-md mx-auto line-clamp-2 sm:line-clamp-none">
+                            Plays in 4K with full original music &amp; cinema audio directly on Facebook.
                           </p>
                         </div>
 
-                        <div className="pt-2">
+                        <div className="pt-1 sm:pt-2">
                           <a
                             href={selectedFilm.videoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#1877F2] hover:bg-[#166fe5] text-white text-xs uppercase tracking-[0.16em] font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105"
+                            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-[#1877F2] hover:bg-[#166fe5] text-white text-xs uppercase tracking-[0.14em] font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105"
                           >
                             <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -250,35 +266,42 @@ export default function FilmsSection({ onInquireFilm }: FilmsSectionProps) {
                 const embed = getVideoEmbedUrl(selectedFilm.videoUrl);
                 if (embed.type === "html5") {
                   return (
-                    <video
-                      src={embed.src}
-                      controls
-                      autoPlay
-                      className="w-full h-full object-contain"
-                    />
+                    <div className="relative aspect-video w-full bg-black flex items-center justify-center">
+                      <video
+                        src={embed.src}
+                        controls
+                        autoPlay
+                        playsInline
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                   );
                 }
                 return (
-                  <iframe
-                    src={embed.src}
-                    title={selectedFilm.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full border-0"
-                  />
+                  <div className="relative aspect-video w-full bg-black flex items-center justify-center">
+                    <iframe
+                      src={embed.src}
+                      title={selectedFilm.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full border-0"
+                    />
+                  </div>
                 );
               })()}
             </div>
 
             {/* Modal Bottom Bar */}
-            <div className="p-5 bg-zinc-950 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-400 border-t border-zinc-800">
-              <p className="font-light">{selectedFilm.description}</p>
-              <div className="flex items-center gap-3 shrink-0">
+            <div className="p-4 sm:p-5 bg-zinc-950 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 text-xs text-zinc-400 border-t border-zinc-800 shrink-0 overflow-y-auto">
+              <p className="font-light text-zinc-300 text-xs leading-relaxed max-w-xl line-clamp-3 sm:line-clamp-none">
+                {selectedFilm.description}
+              </p>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 shrink-0 w-full sm:w-auto">
                 <a
                   href={selectedFilm.videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-[#1877F2] hover:bg-[#166fe5] text-white rounded-full font-medium text-xs uppercase tracking-[0.12em] transition-colors inline-flex items-center gap-2"
+                  className="w-full sm:w-auto justify-center px-4 sm:px-5 py-2.5 bg-[#1877F2] hover:bg-[#166fe5] text-white rounded-full font-medium text-xs uppercase tracking-[0.12em] transition-colors inline-flex items-center gap-2 text-center"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -307,12 +330,12 @@ Please share available dates, rates, and your cinematic wedding/event packages.`
                     setSelectedFilm(null);
                     onInquireFilm(title);
                   }}
-                  className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-semibold text-xs uppercase tracking-[0.12em] transition-colors inline-flex items-center gap-1.5"
+                  className="w-full sm:w-auto justify-center px-4 sm:px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-semibold text-xs uppercase tracking-[0.12em] transition-colors inline-flex items-center gap-1.5 text-center"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d="M12.031 2C6.495 2 2 6.486 2 12.012c0 1.954.561 3.86 1.626 5.502L2 22l4.636-1.583A10.02 10.02 0 0 0 12.031 22C17.568 22 22 17.514 22 12.012 22 6.486 17.568 2 12.031 2Zm5.792 14.288c-.244.686-1.222 1.294-1.874 1.344-.614.047-1.408.067-4.148-1.066-3.298-1.365-5.385-4.717-5.55-4.935-.165-.218-1.332-1.77-1.332-3.376 0-1.606.84-2.395 1.139-2.72.298-.326.653-.408.871-.408.217 0 .435.002.624.011.202.01.472-.077.738.563.272.653.926 2.261 1.008 2.428.082.167.136.363.027.581-.109.218-.163.354-.326.545-.163.19-.344.426-.492.572-.163.164-.333.342-.143.669.19.327.848 1.398 1.817 2.261 1.246 1.11 2.296 1.455 2.623 1.618.327.163.517.136.708-.082.19-.218.816-.953 1.034-1.28.217-.326.435-.272.734-.163.299.109 1.897.896 2.223 1.06.326.163.544.245.626.381.082.136.082.789-.163 1.475Z"/>
                   </svg>
-                  Commission Cinema
+                  <span>Commission Cinema</span>
                 </button>
               </div>
             </div>
