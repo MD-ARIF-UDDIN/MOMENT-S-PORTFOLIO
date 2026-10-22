@@ -182,7 +182,7 @@ export default function Hero() {
                       src={item.image}
                       alt={item.title}
                       fill
-                      priority={index === 0}
+                      priority={index <= 1}
                       className="object-cover object-center"
                       sizes="(max-width: 1280px) 100vw, 1280px"
                     />

@@ -241,6 +241,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plusJakarta.variable} ${inter.variable} ${cormorant.variable} scroll-smooth`}>
       <head>
+        {/* Instant Image Preloads for Zero-Latency First Render */}
+        <link rel="preload" as="image" href="/logo.png" />
+        <link rel="preload" as="image" href="/works/antu-nandita-wedding-embrace.jpg" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
         {/* Favicons & App Icons */}
         <link rel="icon" href="/favicon.ico?v=4" sizes="any" />
         <link rel="icon" type="image/png" href="/logo.png?v=4" />

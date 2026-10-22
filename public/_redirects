@@ -1,1 +1,13 @@
-/*    /index.html   200
+# Pass through all static assets directly so they never return HTML
+/_next/*        /_next/:splat        200
+/works/*        /works/:splat        200
+/team/*         /team/:splat         200
+/*.jpg          /:splat.jpg          200
+/*.jpeg         /:splat.jpeg         200
+/*.png          /:splat.png          200
+/*.webp         /:splat.webp         200
+/*.svg          /:splat.svg          200
+/*.ico          /:splat.ico          200
+
+# Client route reload fallback
+/*              /index.html          200

@@ -199,6 +199,8 @@ export default function ClientAlbumsSection({ onSelectCategory }: ClientAlbumsPr
                           src={img}
                           alt={`${album.title} - photo ${imgIdx + 1}`}
                           fill
+                          priority={albumIdx < 2 && imgIdx === 0}
+                          loading={albumIdx < 2 && imgIdx === 0 ? "eager" : "lazy"}
                           className={`object-cover transition-opacity duration-700 ease-in-out group-hover:scale-105 transition-transform ${
                             imgIdx === currentCardPhotoIdx ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
                           }`}
