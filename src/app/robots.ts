@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://momentsphotography.com/sitemap.xml",
+    sitemap: "https://moments-by-babu.netlify.app/sitemap.xml",
   };
 }

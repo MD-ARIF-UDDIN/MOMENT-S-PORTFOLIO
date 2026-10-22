@@ -1,7 +1,10 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://momentsphotography.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.URL ||
+    "https://moments-by-babu.netlify.app";
   const now = new Date();
 
   return [

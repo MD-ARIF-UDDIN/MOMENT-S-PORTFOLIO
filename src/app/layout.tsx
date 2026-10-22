@@ -24,7 +24,11 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const SITE_URL = "https://momentsphotography.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.URL ||
+  process.env.DEPLOY_PRIME_URL ||
+  "https://moments-by-babu.netlify.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -63,12 +67,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico?v=4", sizes: "any" },
-      { url: "/icon.png?v=4", type: "image/png" },
       { url: "/logo.png?v=4", type: "image/png" }
     ],
     shortcut: "/favicon.ico?v=4",
     apple: [
-      { url: "/apple-icon.png?v=4", sizes: "180x180", type: "image/png" }
+      { url: "/logo.png?v=4", sizes: "180x180", type: "image/png" }
     ],
   },
   openGraph: {
@@ -85,19 +88,19 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/jpeg",
-        alt: "Moment's Photography & Cinematography Studio Banner with Logo and Signature Wedding Portrait",
+        alt: "Moment's Photography & Cinematography Studio Logo Banner",
       },
       {
         url: "/og-square.jpg",
-        width: 600,
-        height: 600,
+        width: 800,
+        height: 800,
         type: "image/jpeg",
-        alt: "Moment's Photography Logo and Couple Portrait",
+        alt: "Moment's Photography Official Brand Logo",
       },
       {
         url: "/logo.png",
-        width: 800,
-        height: 800,
+        width: 335,
+        height: 417,
         type: "image/png",
         alt: "Moment's Official Brand Logo",
       }
