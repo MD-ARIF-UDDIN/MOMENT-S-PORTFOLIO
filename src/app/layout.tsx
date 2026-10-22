@@ -255,7 +255,7 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Moment's Photography & Cinematography Studio Banner with Logo" />
         <link rel="image_src" href={`${SITE_URL}/og-image.jpg`} />
-        <meta itemprop="image" content={`${SITE_URL}/og-image.jpg`} />
+        <meta itemProp="image" content={`${SITE_URL}/og-image.jpg`} />
 
         {/* Schema.org Structured Data */}
         <script
