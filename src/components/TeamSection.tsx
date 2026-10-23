@@ -51,7 +51,7 @@ export default function TeamSection({ onSelectTeamMember }: TeamSectionProps) {
             <div className="lg:col-span-5 relative h-[420px] sm:h-[500px] lg:h-full min-h-[480px] bg-[#181816] overflow-hidden">
               <Image
                 src="/al-shahriar-babu.png"
-                alt="Al Shahriar Babu — Founder & CEO of Moment's Photography & Cinematography"
+                alt="SHAHARIAR SIDDIQ — Founder & CEO of Moment's Photography & Cinematography"
                 fill
                 priority
                 className="object-cover object-top"
@@ -72,7 +72,7 @@ export default function TeamSection({ onSelectTeamMember }: TeamSectionProps) {
               {/* Bottom Portrait Caption */}
               <div className="absolute bottom-5 left-5 right-5 p-4 sm:p-5 rounded-2xl bg-black/75 backdrop-blur-md text-white border border-white/10 shadow-lg">
                 <h3 className="font-serif-display text-2xl font-normal leading-tight text-white">
-                  Al Shahriar Babu
+                  SHAHARIAR SIDDIQ
                 </h3>
                 <p className="text-[11px] uppercase tracking-[0.2em] text-zinc-300 font-mono mt-1">
                   Founder &amp; CEO · Moment&apos;s Photography
@@ -91,7 +91,7 @@ export default function TeamSection({ onSelectTeamMember }: TeamSectionProps) {
                   <span>Founder &amp; Director Statement</span>
                 </div>
                 <h3 className="font-serif-display text-2xl sm:text-4xl text-[#181816] font-bold tracking-tight">
-                  Al Shahriar Babu
+                  SHAHARIAR SIDDIQ
                 </h3>
                 <p className="text-xs uppercase tracking-[0.18em] text-[#807d74] font-mono">
                   Founder &amp; CEO · Moment&apos;s Photography &amp; Cinematography
@@ -143,7 +143,7 @@ export default function TeamSection({ onSelectTeamMember }: TeamSectionProps) {
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#181816] hover:bg-black text-white text-xs font-medium uppercase tracking-[0.14em] transition-all shadow-sm hover:shadow-md"
                 >
                   <MessageCircle className="w-4 h-4 text-emerald-400" />
-                  <span>Message Al Shahriar on WhatsApp</span>
+                  <span>Message SHAHARIAR SIDDIQ on WhatsApp</span>
                 </a>
 
                 <button
@@ -221,11 +221,11 @@ export default function TeamSection({ onSelectTeamMember }: TeamSectionProps) {
                 A Dedicated Team Behind Every Frame
               </h3>
               <p className="text-sm text-[#57554f] max-w-lg mx-auto leading-relaxed font-light">
-                Every wedding and event is covered by a handpicked team of cinematographers, editors, and lighting specialists led by Al Shahriar Babu. Each member is personally trained for consistent excellence in every project.
+                Every wedding and event is covered by a handpicked team of cinematographers, editors, and lighting specialists led by SHAHARIAR SIDDIQ. Each member is personally trained for consistent excellence in every project.
               </p>
             </div>
             <a
-              href={`https://wa.me/8801643666825?text=${encodeURIComponent("Hello Moment's Photography, I would like to know more about your team and book a consultation with Al Shahriar Babu.")}`}
+              href={`https://wa.me/8801643666825?text=${encodeURIComponent("Hello Moment's Photography, I would like to know more about your team and book a consultation with SHAHARIAR SIDDIQ.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold uppercase tracking-wider shadow-md transition-all hover:scale-105"

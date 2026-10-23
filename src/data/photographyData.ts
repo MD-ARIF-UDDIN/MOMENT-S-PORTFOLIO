@@ -671,31 +671,31 @@ export const FILMS_DATA: FilmWork[] = [
     id: "film-antar-trisha",
     title: "Antar X Trisha Pre-Wedding",
     coupleOrClient: "Antar & Trisha · Pre-Wedding Cinema",
-    duration: "Al Shahriar & Rafi",
+    duration: "Shahariar Siddiq & Rafi",
     location: "Chattogram, Bangladesh",
     thumbnail: "/works/antar-trisha.jpg",
     videoUrl: "https://www.facebook.com/share/v/1DtdhF6dEJ/",
-    description: "Cinematic pre-wedding film capturing the romantic journey of Antar and Trisha. Cinematography and process by Al Shahriar, drone cinematography by Rafi, Copyright Moment's."
+    description: "Cinematic pre-wedding film capturing the romantic journey of Antar and Trisha. Cinematography and process by Shahariar Siddiq, drone cinematography by Rafi, Copyright Moment's."
   },
   {
     id: "film-sakib-juhi",
     title: "Sakib X Juhi Wedding Ceremony",
     coupleOrClient: "Sakib & Juhi · Wedding Highlights",
-    duration: "Al Shahriar",
+    duration: "Shahariar Siddiq",
     location: "Chattogram, Bangladesh",
     thumbnail: "/works/sakib-juhi.jpg",
     videoUrl: "https://www.facebook.com/share/v/195Ks46KbJ/",
-    description: "Official royal wedding ceremony film of Sakib and Juhi. Heartfelt vows, timeless bridal elegance, and cinematic moments captured by Al Shahriar for Moment's."
+    description: "Official royal wedding ceremony film of Sakib and Juhi. Heartfelt vows, timeless bridal elegance, and cinematic moments captured by Shahariar Siddiq for Moment's."
   },
   {
     id: "film-javed-afrin",
     title: "জাবেদ ও আফরিনের আকদ (Javed X Afrin)",
     coupleOrClient: "Javed & Afrin · আকদ অনুষ্ঠান",
-    duration: "Al Shahriar",
+    duration: "Shahariar Siddiq",
     location: "Chattogram, Bangladesh",
     thumbnail: "/works/javed-afrin.jpg",
     videoUrl: "https://www.facebook.com/share/v/19nFbqPLjn/",
-    description: "Sacred Akdh ceremony celebration of Javed and Afrin. Traditional Islamic nuptials, heartfelt blessings, and cinematic moments captured by Al Shahriar for Moment's."
+    description: "Sacred Akdh ceremony celebration of Javed and Afrin. Traditional Islamic nuptials, heartfelt blessings, and cinematic moments captured by Shahariar Siddiq for Moment's."
   },
   {
     id: "film-emotional-bidai",
@@ -711,11 +711,11 @@ export const FILMS_DATA: FilmWork[] = [
     id: "film-commercial-smart-polymer",
     title: "Smart Polymer Industries Ltd.",
     coupleOrClient: "Smart Group · Commercial Film",
-    duration: "Al Shahriar",
+    duration: "Shahariar Siddiq",
     location: "Commercial Cinema",
     thumbnail: "/works/smart-polymer.jpg",
     videoUrl: "https://www.facebook.com/share/v/1CZ2WxGLEK/",
-    description: "Official industrial commercial cinema production for Smart Polymer Industries Ltd. (Smart Group). Cinematography by Al Shahriar, Copyright Moment's."
+    description: "Official industrial commercial cinema production for Smart Polymer Industries Ltd. (Smart Group). Cinematography by Shahariar Siddiq, Copyright Moment's."
   },
   {
     id: "film-samrat-tahia",
@@ -741,8 +741,8 @@ export const FILMS_DATA: FilmWork[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: "team-al-shahriar",
-    name: "Al Shahriar Babu",
+    id: "team-shahariar-siddiq",
+    name: "SHAHARIAR SIDDIQ",
     role: "Founder & Director",
     specialty: "Cinematography, Wedding Direction & Master Editing",
     bio: "Founder of Moment's Photography & Cinematography. Passionately pursuing the art of capturing moments that tell stories and evoke emotions since 2019.",
@@ -1112,7 +1112,7 @@ export const PHOTOGRAPHY_WORKS: PhotoWork[] = [
     client: "Smart Group",
     location: "Commercial Production",
     year: "2025",
-    story: "Official industrial commercial cinema production for Smart Polymer Industries Ltd. (Smart Group). Cinematographer: Al Shahriar. Copyright Moment's.",
+    story: "Official industrial commercial cinema production for Smart Polymer Industries Ltd. (Smart Group). Cinematographer: Shahariar Siddiq. Copyright Moment's.",
     cameraSettings: {
       camera: "Cinema Rig",
       lens: "Cinema Primes",

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     default: "Moment's | Wedding Photography & Cinematography Studio",
     template: "%s | Moment's Photography & Cinematography"
   },
-  description: "Official studio of Moment's Photography & Cinematography. Timeless Bengali wedding photography, cinematic wedding films, Gaye Holud celebrations, and pre-wedding romance across Banskhali, Chattogram, Dhaka, and Sylhet. Directed by Al Shahriar Babu.",
+  description: "Official studio of Moment's Photography & Cinematography. Timeless Bengali wedding photography, cinematic wedding films, Gaye Holud celebrations, and pre-wedding romance across Banskhali, Chattogram, Dhaka, and Sylhet. Directed by SHAHARIAR SIDDIQ.",
   applicationName: "Moment's Photography",
   keywords: [
     "Moment's Photography",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "Gaye Holud cinematography",
     "pre wedding shoot Bangladesh",
     "bridal portraits Bangladesh",
-    "Al Shahriar Babu",
+    "SHAHARIAR SIDDIQ",
     "Belal Mahmud photographer",
     "Anik Das cinematographer",
     "Sk Abdullah cinematographer",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     "alshahriar.7775@gmail.com",
     "Moments7775"
   ],
-  authors: [{ name: "Al Shahriar Babu", url: SITE_URL }],
+  authors: [{ name: "SHAHARIAR SIDDIQ", url: SITE_URL }],
   creator: "Moment's Photography & Cinematography",
   publisher: "Moment's Photography & Cinematography",
   formatDetection: {
@@ -146,7 +146,7 @@ export default function RootLayout({
         "@type": ["PhotographyBusiness", "LocalBusiness", "ProfessionalService"],
         "@id": `${SITE_URL}/#organization`,
         "name": "Moment's Photography & Cinematography",
-        "alternateName": ["Moment's", "Moment's Studio", "Moment's by Al Shahriar Babu"],
+        "alternateName": ["Moment's", "Moment's Studio", "Moment's by SHAHARIAR SIDDIQ"],
         "url": SITE_URL,
         "logo": `${SITE_URL}/logo.png`,
         "image": `${SITE_URL}/og-image.jpg`,
@@ -176,7 +176,7 @@ export default function RootLayout({
         ],
         "founder": {
           "@type": "Person",
-          "name": "Al Shahriar Babu",
+          "name": "SHAHARIAR SIDDIQ",
           "jobTitle": "Founder & CEO"
         },
         "priceRange": "৳18,000 - ৳65,000",

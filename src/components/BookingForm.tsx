@@ -256,7 +256,7 @@ ${formData.message || "I would like to inquire about date availability and booki
                         type="text"
                         id="name"
                         name="name"
-                        placeholder="e.g. Al Shahriar"
+                        placeholder="e.g. Shahariar Siddiq"
                         value={formData.name}
                         onChange={handleChange}
                         required
